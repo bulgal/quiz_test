@@ -15,7 +15,7 @@ class QuizController extends AbstractController
     #[Route('/', methods: ['GET'])]
     public function index(EntityManagerInterface $entityManager): Response
     {
-        $questions = $entityManager->getRepository(Question::class)->getAll(true);
+        $questions = $entityManager->getRepository(Question::class)->findAll();
         if (!$questions) {
             throw $this->createNotFoundException('We don\'t have questions for you');
         }

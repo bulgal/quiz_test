@@ -6,12 +6,13 @@
                 <input type="text" name="name">  </input>
                 <button type="button" onclick="startQuiz()">Start quiz</button>
             </div>
-            {% for key, question in questions %}
+            {% for key, question in questions|shuffle %}
                 <div id={{'question-' ~ key}} hidden>
                     <h2>Question {{ key + 1 }} of {{ questions|length }}:</h2>
                     <h3>{{ question.title }}</h3>
-                    {% for optionKey, option in question.options %}
-                        <label class="container">{{ option }}
+                    {% set answerKeys = question.options|keys|shuffle %}
+                    {% for optionKey in answerKeys %}
+                        <label class="container">{{ question.options[optionKey] }}
                             <input type="checkbox" name={{ 'answer[' ~ question.id ~ '][' ~ optionKey ~ ']' }}>
                             <span class="checkmark"></span>
                         </label>

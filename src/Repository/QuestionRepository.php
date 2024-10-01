@@ -17,20 +17,6 @@ class QuestionRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param boolean $isRandomOrder
-     * @return Question[]
-     */
-    public function getAll(bool $isRandomOrder = false): array
-    {
-        $questions = $this->findAll();
-        if ($isRandomOrder) {
-            shuffle($questions);
-        }
-
-        return $questions;
-    }
-
-    /**
      * @param array<int> $ids
      * @return Question[]
      */
