@@ -30,12 +30,9 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
-$(document).ready(function(){
-
-});
     let questionslength = {{ questions|length }};
 
-    function startQuiz() {
+    function startQuiz(event) {
         $("#userName").attr('hidden', true);
         $("#question-0").removeAttr('hidden');
     }
