@@ -1,0 +1,55 @@
+{% block content %}
+    <h2>Your result is {{ score }} of {{ quizResult.data|length }}</h2>
+
+    <table class="styled-table">
+    <tr>
+        <th>Right answewrs</th>
+        <th>Wrong answers</th>
+    </tr>
+        {% for question, result in quizResult.data %}
+
+            <tr>
+                {% if result == true %}
+                    <th style="background-color:#9bffaa">{{ question }}</th>
+                    <th></th>
+                {% else %}
+                    <th></th>
+                    <th style="background-color:#fc959c">{{ question }}</th>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+    <p></p>
+    <a href="/" class="button"> Try again </a>
+{% endblock %}
+
+<style>
+    .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 12px 15px;
+    }
+
+    a.button {
+        padding: 1px 6px;
+        border: 1px outset buttonborder;
+        border-radius: 3px;
+        color: buttontext;
+        background-color: buttonface;
+        text-decoration: none;
+    }
+</style>
